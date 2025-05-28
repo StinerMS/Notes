@@ -12,4 +12,4 @@ Route::get('/about', function () {
     echo '<p>This is the about page of our application.</p>';
 });
 
-Route::get('/main', [MainController::class, 'index']);
+Route::get('/main/{value}', [MainController::class, 'index']);
