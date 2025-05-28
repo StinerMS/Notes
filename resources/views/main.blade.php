@@ -10,5 +10,10 @@
     <h1>Welcome View and Blade!</h1>
     <hr>
     <h3>The value is {{$value}}</h3>
+    <@php
+        // Foi dito que {{}} é utilizado para Blade, "substituindo" a forma tradicional que seria:
+        // <?= $value ?>
+        // <?php echo $value ?>
+    @endphp
 </body>
 </html>
