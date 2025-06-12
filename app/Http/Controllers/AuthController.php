@@ -19,11 +19,10 @@ class AuthController extends Controller
         echo $request->input('text-password');
         echo '<br>';
 
-        dd($request);
+        //dd($request);
+        //dd($request->all());
 
         echo '<br>';
-
-        echo $request->all();
 
     }
 
