@@ -13,11 +13,12 @@
                     <!-- form -->
                     <div class="row justify-content-center">
                         <div class="col-md-10 col-12">
-                            <form action="/loginSubmit" method="post">
+                            {{-- novalidade faz com que não há validações por parte do HTML 5 --}}
+                            <form action="/loginSubmit" method="post" novalidate>
                                 @csrf
                                 <div class="mb-3">
                                     <label for="text-username" class="form-label">Username</label>
-                                    <input type="text" class="form-control bg-dark text-info" name="text-username" value="{{old('text-username')}}">
+                                    <input type="email" class="form-control bg-dark text-info" name="text-username" value="{{old('text-username')}}" required>
                                     {{-- Show Error --}}
                                     @error('text-username')
                                         <div class="alert-danger">{{$message}}</div>
@@ -25,7 +26,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="text-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control bg-dark text-info" name="text-password" value="{{old('text-password')}}">
+                                    <input type="password" class="form-control bg-dark text-info" name="text-password" value="{{old('text-password')}}" required>
                                     {{-- Show Error --}}
                                     @error('text-password')
                                         <div class="alert-danger">{{$message}}</div>
