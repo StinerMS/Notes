@@ -17,13 +17,19 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="text-username" class="form-label">Username</label>
-                                    <input type="text" class="form-control bg-dark text-info" name="text-username"
-                                        >
+                                    <input type="text" class="form-control bg-dark text-info" name="text-username" value="{{old('text-username')}}">
+                                    {{-- Show Error --}}
+                                    @error('text-username')
+                                        <div class="alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="text-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control bg-dark text-info" name="text-password"
-                                        >
+                                    <input type="password" class="form-control bg-dark text-info" name="text-password" value="{{old('text-password')}}">
+                                    {{-- Show Error --}}
+                                    @error('text-password')
+                                        <div class="alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-secondary w-100">LOGIN</button>
@@ -36,19 +42,6 @@
                     <div class="text-center text-secondary mt-3">
                         <small>&copy; <?= date('Y') ?> Notes</small>
                     </div>
-
-                    {{-- Apresentando os Errors --}}
-
-                    @if($errors->any())
-                        <div class="alert alert-danger mt-3">
-                            <ul class="m-0">
-                                @foreach($errors->all() as $error)
-                                    <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
 
                 </div>
             </div>
