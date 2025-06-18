@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\TryCatch;
+
 //use Illuminate\Support\Facades\dd;
 
 class AuthController extends Controller
@@ -37,7 +41,14 @@ class AuthController extends Controller
         $username = $request->input('text-username');
         $password = $request->input('text-password');
 
-        echo 'ok!';
+        // Test db connection
+        try {
+            DB::connection()->getPdo();
+            echo 'Connection is OK!';
+        } catch (\PDOException $e) {
+            echo 'Connection failed: ' . $e->getMessage();
+        }
+        echo 'Finished';
     }
 
     public function logout()
