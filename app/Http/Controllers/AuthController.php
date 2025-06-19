@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,14 +42,21 @@ class AuthController extends Controller
         $username = $request->input('text-username');
         $password = $request->input('text-password');
 
-        // Test db connection
-        try {
-            DB::connection()->getPdo();
-            echo 'Connection is OK!';
-        } catch (\PDOException $e) {
-            echo 'Connection failed: ' . $e->getMessage();
-        }
-        echo 'Finished';
+        // ler informações da tabela Users
+
+        // $users = User::all()->toArray();
+
+        // como uma instância de objeto da classe User (model)
+        $user = new User();
+        $allUsers = $user->all()->toArray();
+
+        echo '<pre>';
+
+        print_r($allUsers);
+
+        echo '<br><br>';
+
+        var_dump($allUsers);
     }
 
     public function logout()
