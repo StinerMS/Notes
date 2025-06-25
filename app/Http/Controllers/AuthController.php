@@ -42,21 +42,21 @@ class AuthController extends Controller
         $username = $request->input('text-username');
         $password = $request->input('text-password');
 
-        // ler informações da tabela Users
+        // Checkar se o usuário está no banco de dados
 
-        // $users = User::all()->toArray();
+        try {
+            $user = User::where('username', $username)
+                       ->where('deleted_at', NULL)
+                       ->first();
 
-        // como uma instância de objeto da classe User (model)
-        $user = new User();
-        $allUsers = $user->all()->toArray();
+            echo '<pre>';
+            print_r($user);
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
 
-        echo '<pre>';
 
-        print_r($allUsers);
-
-        echo '<br><br>';
-
-        var_dump($allUsers);
     }
 
     public function logout()
