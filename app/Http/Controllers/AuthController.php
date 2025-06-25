@@ -49,8 +49,34 @@ class AuthController extends Controller
                        ->where('deleted_at', NULL)
                        ->first();
 
-            echo '<pre>';
-            print_r($user);
+           // echo '<pre>';
+           // print_r($user);
+
+           if(!$user){
+                return redirect()->back()->withInput()->with('loginError', 'Usuário ou password incorretos.');
+           }
+
+           // check if password is correct
+
+           if(!password_verify($password, $user->password)){
+                return redirect()->back()->withInput()->with('loginError', 'Usuário ou password incorretos.');
+           }
+
+           // update last login
+
+           $user->last_login = date('Y-m-d H:i:s');
+           $user->save();
+
+           // login user
+
+            session([
+                'user' => [
+                    'id' => $user->id,
+                    'username' => $user->username
+                ]
+                ]);
+                         // ou session('user.username')
+            echo 'Login de ' . session('user')['username'] . ' feito com sucesso!';
             
         } catch (\Throwable $th) {
             //throw $th;
