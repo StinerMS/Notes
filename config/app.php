@@ -1,5 +1,7 @@
 <?php
 
+use PhpParser\Node\Stmt\TraitUseAdaptation\Alias;
+
 return [
 
     /*
@@ -103,6 +105,10 @@ return [
         ...array_filter(
             explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
+    ],
+
+    'aliases' => [
+        'Operations' => App\Facades\Operations::class,
     ],
 
     /*
