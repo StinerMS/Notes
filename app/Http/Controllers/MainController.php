@@ -21,4 +21,8 @@ class MainController extends Controller
     {
         echo "I'm creating a new note!";
     }
+
+    public function edit(){
+        
+    }
 }
