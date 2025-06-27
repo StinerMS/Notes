@@ -76,8 +76,9 @@ class AuthController extends Controller
                 ]
                 ]);
                          // ou session('user.username')
-            echo 'Login de ' . session('user')['username'] . ' feito com sucesso!';
-            
+            //echo 'Login de ' . session('user')['username'] . ' feito com sucesso!';
+            return redirect()->to('/');
+
         } catch (\Throwable $th) {
             //throw $th;
         }
